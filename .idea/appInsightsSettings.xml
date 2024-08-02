@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.cusufcan.mercansocial" />
+                  <option name="mobileSdkAppId" value="1:977217227912:android:5b148bc3ba9adf4733e33d" />
+                  <option name="projectId" value="mercan-social" />
+                  <option name="projectNumber" value="977217227912" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
