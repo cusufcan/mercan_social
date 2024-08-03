@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">MercanSocial</string>
+
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="dont_have_account">Dont have account? Register.</string>
+    <string name="already_have_account">Already have account? Login.</string>
+
+    <string name="input_empty">Input can not be empty.</string>
+    <string name="short_password">Password must be at least 6 characters.</string>
+    <string name="auth_failed">Authentication failed.</string>
+    <string name="close">Close</string>
 </resources>
