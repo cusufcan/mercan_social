@@ -14,6 +14,8 @@ import com.cusufcan.mercansocial.util.showSnackbar
 import com.cusufcan.mercansocial.util.trimmedText
 import com.cusufcan.mercansocial.util.validate
 import com.cusufcan.mercansocial.viewmodel.AuthViewModel
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class AuthFragment : Fragment() {
     private var _binding: FragmentAuthBinding? = null
@@ -106,11 +108,21 @@ class AuthFragment : Fragment() {
             }
 
             // Register
-            authViewModel.register(email, password).addOnSuccessListener { navigateToHome(view) }
-                .addOnFailureListener {
+            authViewModel.register(email, password).addOnSuccessListener {
+                Firebase.firestore.collection("Users").document(it.user!!.uid).set(
+                    hashMapOf(
+                        "uid" to it.user!!.uid, "username" to username, "email" to email,
+                    )
+                ).addOnSuccessListener {
+                    navigateToHome(view)
+                }.addOnFailureListener {
                     showSnackbar(getString(R.string.auth_failed))
                     setLoading(false)
                 }
+            }.addOnFailureListener {
+                showSnackbar(getString(R.string.auth_failed))
+                setLoading(false)
+            }
         }
     }
 

@@ -14,5 +14,12 @@
     <string name="input_empty">Input can not be empty.</string>
     <string name="short_password">Password must be at least 6 characters.</string>
     <string name="auth_failed">Authentication failed.</string>
+    <string name="upload_failed">Upload failed.</string>
+    <string name="fetch_failed">Fetch failed.</string>
+    <string name="delete_failed">Delete failed.</string>
     <string name="close">Close</string>
+
+    <string name="sign_out">Sign Out</string>
+    <string name="create_post">Create Post</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.cusufcan.mercansocial"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -58,6 +58,8 @@ dependencies {
     implementation(libs.firebase.analytics)
     // Firebase Auth
     implementation(libs.firebase.auth)
+    // Firebase Firestore
+    implementation(libs.firebase.firestore.ktx)
 
     // Navigation
     implementation(libs.androidx.navigation.fragment.ktx)

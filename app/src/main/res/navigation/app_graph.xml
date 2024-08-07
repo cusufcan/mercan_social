@@ -26,5 +26,19 @@
             app:destination="@id/authFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.cusufcan.mercansocial.view.fragment.CreatePostFragment"
+        android:label="fragment_create_post"
+        tools:layout="@layout/fragment_create_post">
+        <action
+            android:id="@+id/action_createPostFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/createPostFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
