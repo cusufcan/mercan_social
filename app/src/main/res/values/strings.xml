@@ -17,6 +17,8 @@
     <string name="upload_failed">Upload failed.</string>
     <string name="fetch_failed">Fetch failed.</string>
     <string name="delete_failed">Delete failed.</string>
+    <string name="username_taken">Username is already taken.</string>
+    <string name="space_not_allowed">Space is not allowed.</string>
     <string name="close">Close</string>
 
     <string name="sign_out">Sign Out</string>

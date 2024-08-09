@@ -104,23 +104,51 @@ class AuthFragment : Fragment() {
             val username = binding.usernameEditText.trimmedText()
             if (!username.validate()) {
                 showSnackbar(getString(R.string.input_empty))
+                setLoading(false)
                 return
             }
 
-            // Register
-            authViewModel.register(email, password).addOnSuccessListener {
-                Firebase.firestore.collection("Users").document(it.user!!.uid).set(
-                    hashMapOf(
-                        "uid" to it.user!!.uid, "username" to username, "email" to email,
-                    )
-                ).addOnSuccessListener {
-                    navigateToHome(view)
-                }.addOnFailureListener {
-                    showSnackbar(getString(R.string.auth_failed))
+            if (username.contains(" ")) {
+                showSnackbar(getString(R.string.space_not_allowed))
+                setLoading(false)
+                return
+            }
+
+            var isUsernameValid = true
+            Firebase.firestore.collection("Users").get().addOnSuccessListener {
+                val docs = it.documents
+                for (doc in docs) {
+                    if (doc.get("username") == username) {
+                        isUsernameValid = false
+                        break
+                    }
+                }
+                if (!isUsernameValid) {
                     setLoading(false)
+                    showSnackbar(getString(R.string.username_taken))
+                } else {
+                    // Register
+                    authViewModel.register(email, password).addOnSuccessListener { fUser ->
+                        Firebase.firestore.collection("Users").document(fUser.user!!.uid).set(
+                            hashMapOf(
+                                "uid" to fUser.user!!.uid,
+                                "username" to username,
+                                "email" to email,
+                            )
+                        ).addOnSuccessListener {
+                            navigateToHome(view)
+                        }.addOnFailureListener {
+                            showSnackbar(getString(R.string.auth_failed))
+                            setLoading(false)
+                        }
+                    }.addOnFailureListener {
+                        showSnackbar(getString(R.string.auth_failed))
+                        setLoading(false)
+                    }
                 }
             }.addOnFailureListener {
                 showSnackbar(getString(R.string.auth_failed))
+                isUsernameValid = false
                 setLoading(false)
             }
         }
